@@ -1,0 +1,33 @@
+{%extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block content %}
+
+<br/><br/>    
+<h1 style="padding-left:100px">| Available Buses |</h1>
+{% for x in available  %}
+<div style= "display: inline-block; padding:100px;">
+<img src='{{x.image.url}}' alt='' style="height:200px; width:230px"/> 
+<br/><br/>
+<h4>From: {{x.from2}}</h4>
+<h4>To: {{x.to2}}</h4>
+<h4>{{x.Price}} EGP</h4>
+<h4>{{x.date2}}</h4>
+<h4>{{x.time2}}</h4>
+<br />
+</div>
+{% endfor %}
+
+
+<br/><br/>
+<h1 style="padding-left:100px">| Choose Your Ride |</h1>
+<br/>
+<form action="" style="text-align:center; background-color:000" method="post" class="form form-control, p-3" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% bootstrap_form forms %}
+    <br/>
+    {% buttons %}
+        <button type="submit" class="btn btn-danger">Confirm</button>
+    {% endbuttons %}
+</form> 
+{% endblock content %}
